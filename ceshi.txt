@@ -1,4 +1,7 @@
-¿œ∫ÿ£¨≤ª¥Ì∞°£ø
-“ª∞„∞„
+<s:iterator value="demolist" id="row" status="st">
+<s:property value="#st.count" />°¢<s:property value="row"/>
+<s:if test="#st.odd"></s:if>
+<s:else></s:else>
+</s:iterator>
 
 
