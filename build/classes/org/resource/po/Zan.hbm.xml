@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="org.resource.po.Zan" table="ZAN">
+
+<id name="zan_id" column="zan_id" type="int">
+	<generator class="increment"/>
+	
+</id>
+	<property name="zan_title_host" type="int">
+		<column name="zan_title_host" />		
+	</property>
+	
+	<property name="zan_person_id"  type="int">
+	<column name="zan_person_id"/>
+	</property>
+	
+	<property name="zan_person_name" type="java.lang.String">
+	<column name="zan_person_name" />
+	</property>
+	
+	<property name="zan_time"  type="java.lang.String">
+	<column name="zan_time"/>
+	</property>
+ 
+	 <many-to-one name="title" column="tid" class="org.resource.po.Title" lazy="false" not-null="false"/>
+	</class>
+	</hibernate-mapping>

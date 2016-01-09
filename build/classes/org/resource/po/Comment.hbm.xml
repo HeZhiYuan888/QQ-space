@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.resource.po.Comment" table="COMMENT">
+        <id name="comment_id" type="int" >
+            <column name="COMMENT_ID" />
+            <generator class="increment" />
+        </id>
+        <property name="comment_titleId" type="int">
+            <column name="COMMENT_TITLEID" />
+        </property>
+        <property name="comment_person" type="int">
+            <column name="COMMENT_PERSON" />
+        </property>
+        <property name="comment_content" type="java.lang.String">
+            <column name="COMMENT_CONTENT"/>
+        </property>
+        <property name="comment_time" type="java.lang.String">
+            <column name="COMMENT_TIME" />
+        </property> 
+       <!--  title-comment **一对多**的映射***多***的关系 -->
+        <many-to-one name="title" column="titleid" class="org.resource.po.Title" lazy="false"/>       
+         <!--  comment-comment 一对多***的自身映射***多***的关系 -->
+        <many-to-one name="comment" column="commentid" class="org.resource.po.Comment" lazy="false"/> 
+        
+        <set name="comments" inverse="true" cascade="all" lazy="false">
+        <key column="commentid"/>
+        <one-to-many class="org.resource.po.Comment"/>
+        </set>
+           
+           <many-to-one name="member" class="org.resource.po.Member" column="memberid" not-null="true" lazy="false"/>
+    </class>
+</hibernate-mapping>
+
+	

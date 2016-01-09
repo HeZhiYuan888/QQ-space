@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebContent/TitleList.jsp=UTF-8
+encoding//WebContent/error.jsp=UTF-8
+encoding//WebContent/templates/common/login_succ.jsp=UTF-8
+encoding//WebContent/templates/vip/home.jsp=UTF-8
+encoding//WebContent/templates/vip/login.jsp=UTF-8
+encoding//WebContent/templates/vip/publishSaySay.jsp=UTF-8
+encoding//src/base_action/LoginAction.java=UTF-8
+encoding//src/base_action/Transmit.java=UTF-8
+encoding/<project>=UTF-8

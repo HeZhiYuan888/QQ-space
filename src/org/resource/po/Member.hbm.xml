@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.resource.po.Member" table="MEMBER">
+        <id name="vip_id" type="int">
+            <column name="vip_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />           
+        </property>
+        <property name="sex" type="int">
+            <column name="SEX" />
+        </property>
+        <property name="power" type="int">
+            <column name="POWER" />
+        </property>
+        <property name="birthday" type="java.lang.String">
+            <column name="BIRTHDAY" />
+        </property>
+        <set name="members"  table="selectedMembers" cascade="all" lazy="false">
+        <key column="friendsid"/>
+        <many-to-many  class="org.resource.po.Member" column="memberid"/>       
+        </set>
+        
+        <set name="friends" table="selectedMembers" cascade="all" lazy="false" inverse="true">
+        <key column="memberid"/> 
+        <many-to-many class="org.resource.po.Member" column="friendsid"/>
+        </set>
+        
+        <set name="titles" cascade="all" inverse="true" lazy="false" >
+        <key column="memberid"/>
+        <one-to-many class="org.resource.po.Title"/>
+        </set>
+      
+    </class>
+</hibernate-mapping>
+ 

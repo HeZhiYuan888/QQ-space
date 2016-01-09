@@ -1,0 +1,40 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+    <package name="default" extends="struts-default" namespace="/">  
+        <action name="ShowTitle" class="listShow.ShowTitle">
+      <!--   定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/TitleList.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action> 
+        
+        <action name="login" class="base_action.LoginAction">
+            <result name="succ">/templates/vip/home.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        
+        <action name="publish" class="base_action.Publish">
+        	<result name="succ">/templates/vip/home.jsp</result>
+       	 </action>
+       	 
+       	 <action name="AddComment" class="base_action.AddComment">
+     	 <param name="member">${member}</param> 
+       	  <param name="member">${comment}</param> 
+       	 <result name="succ" type="chain">      	
+       	 <param name="actionName">login</param>       	      
+      	</result>      
+       	 </action>
+      
+       	 <action name="Transmit" class="base_action.Transmit">
+       	 <result name="succ">/success.jsp</result>
+       	 </action>
+       	      
+       	<!--  <action name="Zan" class="base_action.Zan">  
+       	 <result name="succ" type="redirectAction">login.action</result>
+       	 </action> -->
+       	 <action name="AddZan" class="base_action.AddZan">  
+       	 <result name="succ" >success.jsp</result>
+       	 </action>
+    </package>  
+</struts> 

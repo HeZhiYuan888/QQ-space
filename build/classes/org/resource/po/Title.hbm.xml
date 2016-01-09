@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.resource.po.Title" table="TITLE">
+        <id name="title_id" type="int">
+            <column name="TITLE_ID" />
+              <generator class="increment" />
+        </id>
+        <property name="title_host" type="int">
+            <column name="TITLE_HOST" />
+        </property>
+        <property name="title_name" type="java.lang.String">        
+            <column name="TITLE_NAME" />
+        </property>
+        <property name="title_content" type="java.lang.String">
+            <column name="TITLE_CONTENT" />
+        </property>       
+        <property name="title_time" type="java.lang.String">
+        <column name="TITLE_TIME"/>
+        </property> 
+              
+        <set name="zans" cascade="all" inverse="true" lazy="false">       
+        	<key column="tid"/> 
+        	<one-to-many class="org.resource.po.Zan"/>
+        </set>
+        
+        <set name="comments" cascade="all" inverse="true" lazy="false">
+        	<key column="titleid"/>
+        	<one-to-many class="org.resource.po.Comment"/>
+        </set>
+        <many-to-one name="member" column="memberid" class="org.resource.po.Member" lazy="false" not-null="true"/>
+    </class>
+</hibernate-mapping>
+ 
