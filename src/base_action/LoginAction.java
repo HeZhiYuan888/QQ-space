@@ -123,7 +123,7 @@ public class LoginAction extends HttpServlet {
 				session.setAttribute("vip", mm);
 				return "succ";	
 			}
-			return "error";	
+			return "err";	
 	 }
 	
 }

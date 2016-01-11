@@ -44,17 +44,19 @@ public class AddZan {
 	public String execute()
 	{
 		System.out.println("找到点赞的action");		
-		HttpServletRequest request = ServletActionContext.getRequest(); 
-		HttpSession session=request.getSession();
-		Member member = (Member) session.getAttribute("vip");		
-		Zan zan=new Zan();
-	
-		zan.setZan_title_host(this.getNameid());
-		zan.setZan_person_id(member.getVip_id());
-		zan.setZan_person_name(member.getName());
-		
-		zan.setTitle(this.getTit());		
-		BasicDao.InsertObject(zan);
+		try {
+			HttpServletRequest request = ServletActionContext.getRequest();
+			HttpSession session = request.getSession();
+			Member member = (Member) session.getAttribute("vip");
+			Zan zan = new Zan();
+			zan.setZan_title_host(this.getNameid());
+			zan.setZan_person_id(member.getVip_id());
+			zan.setZan_person_name(member.getName());
+			zan.setTitle(this.getTit());
+			BasicDao.InsertObject(zan);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return "succ";
 	}
 

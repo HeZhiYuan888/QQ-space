@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<title>Insert title here</title>
+<title>QQ空间</title>
 <%request.setCharacterEncoding("UTF-8");//传值编码
 response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 </head>
@@ -15,6 +15,7 @@ response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
   <%Member mm=(Member)session.getAttribute("vip");
 String name=mm.getName();%>
 <h5 style="float:right;">你好，<%=name%></h5>
+<h4 class="title" style="float:left;">QQ空间</h4>
 <p>好友列表</p>
 <ul>
 <s:iterator value="friends" >
@@ -26,24 +27,21 @@ String name=mm.getName();%>
 
 <br>
 
-<h4 class="title" style="float:left;">QQ空间</h4>
+
 <br>
 <h6><a href="templates/vip/publishSaySay.jsp">发表说说</a></h6>
 <div width="500px" height="100px" align="left">
 </div>
-
 <div width="500px" height="10px" border="1px" color="red">
-
 <p2>好友动态</p2>
 <table width="1000px">
 <s:iterator value="listTitle">
 <form action="AddComment.action"  method="post" onsubmit="return checksubmit();">
 <tr>
-<%-- <tr width="100px"><s:property value="title_people_name"/></tr>  --%>
-
 
 <tr><s:property value="member.getName()"/></tr>
 <tr><s:property  value="title_content"/></tr>
+
 
 <s:iterator id ="data" status="status" value="listComment">   
     <s:if test="person!=null">      
@@ -59,7 +57,7 @@ String name=mm.getName();%>
 	</s:else>
 </s:iterator>
 <div align="left">
-<input type="submit"  value="评论">
+<input type="submit"  value="点评">
 <a href="Transmit.action?title_id=<s:property value="title_id"/>&title.title_name=<s:property value="title_name"/>&title.title_content=<s:property value="title_content"/>&title_people_name=<s:property value="title_people_name"/>">转发</a>
 <a href="AddZan.action?tit.title_content=<s:property value="title_content"/>&name=<s:property value="member.getName()"/>&nameid=<s:property value="member.getVip_id()"/>&tit.title_id=<s:property value="title_id"/>"><span style="color:red;">赞(<s:property value="zan"/>)</span></a>
 <input type="hidden" name="comment.comment_titleId" value="<s:property value="title_host"/>">
@@ -69,10 +67,7 @@ String name=mm.getName();%>
 </div>
 </tr>
 </form>
-
 </s:iterator>
-
-
 </table>
 </body>
 <script language="javascript">
@@ -105,8 +100,7 @@ function transmit()
 	}
 function checksubmit()
 	{
-	 var a=document.getElementById("textarea").value;
-		
+	 var a=document.getElementById("textarea").value;		
 		if(a==""||a==null)
 		{
 			alert("的确是空");
