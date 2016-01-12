@@ -16,9 +16,6 @@ response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 String name=mm.getName();%>
 <h5 style="float:right;">你好，<%=name%></h5>
 <h4 class="title" style="float:left;">QQ空间</h4>
-
-
-
 <p>好友列表</p>
 <ul>
 <s:iterator value="friends" >
