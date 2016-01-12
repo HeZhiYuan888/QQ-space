@@ -72,10 +72,7 @@ public class EcodeFilter implements Filter{
 	            chain.doFilter(request, response);  
 	        }  
 	}
-       
-     
-
-
+    
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub

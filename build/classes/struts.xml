@@ -9,28 +9,25 @@
 			<interceptor name="authority" class="base_action.QQInterceptor"/>
 		</interceptors> 
 		<global-results>
-				<result name="login" type="redirectAction">login</result>
+				<result name="login" >/index.jsp</result>
 		</global-results>
         <action name="ShowTitle" class="listShow.ShowTitle">
-      <!--   定义处理结果字符串和资源之间的映射关系 -->
             <result name="success">/TitleList.jsp</result>
-            <result name="error">/error.jsp</result>
-            
-       	 <interceptor-ref name="authority"></interceptor-ref>
+            <result name="error">/error.jsp</result>                	
        	  <interceptor-ref name="defaultStack"></interceptor-ref>
+       	   <interceptor-ref name="authority"></interceptor-ref>
         </action> 
         
         <action name="login" class="base_action.LoginAction">
             <result name="succ">/templates/vip/home.jsp</result>
             <result name="err">/error.jsp</result>
-            <result name="error">/index.jsp</result>
-       	 
+            <result name="error">/index.jsp</result>      	 
         </action>
         
         <action name="publish" class="base_action.Publish">
-        	<result name="succ">/templates/vip/home.jsp</result>
-        		 <interceptor-ref name="authority"></interceptor-ref>
+        	<result name="succ">/templates/vip/home.jsp</result>      
        	  <interceptor-ref name="defaultStack"></interceptor-ref>
+       	   <interceptor-ref name="authority"></interceptor-ref>
        	 </action>
        	 
        	 <action name="AddComment" class="base_action.AddComment">
@@ -38,22 +35,23 @@
        	  <param name="member">${comment}</param> 
        	 <result name="succ" type="chain">      	
        	 <param name="actionName">login</param>       	      
-      	</result>      
-      		 <interceptor-ref name="authority"></interceptor-ref>
+      	</result>           		
        	  <interceptor-ref name="defaultStack"></interceptor-ref>
+       	   <interceptor-ref name="authority"></interceptor-ref>
        	 </action>
       
        	 <action name="Transmit" class="base_action.Transmit">
-       	 <result name="succ">/success.jsp</result>
-       	 	 <interceptor-ref name="authority"></interceptor-ref>
+       	 <result name="succ">/success.jsp</result>      	 
        	  <interceptor-ref name="defaultStack"></interceptor-ref>
+       	  	 <interceptor-ref name="authority"></interceptor-ref>
        	 </action>
        	      
        
        	 <action name="AddZan" class="base_action.AddZan">  
-       	 <result name="succ" >success.jsp</result>
-       	 <interceptor-ref name="authority"></interceptor-ref>
-       	  <interceptor-ref name="defaultStack"></interceptor-ref>
+       	 <result name="succ" >success.jsp</result>     	
+       	 
+       	   <interceptor-ref name="authority"></interceptor-ref>
+       	    <interceptor-ref name="defaultStack"></interceptor-ref>
        	 </action>
     </package>  
 </struts> 
