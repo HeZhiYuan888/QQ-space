@@ -14,8 +14,11 @@ response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 <body onload="getTime()">
   <%Member mm=(Member)session.getAttribute("vip");
 String name=mm.getName();%>
+<div >
 <h5 style="float:right;">你好，<%=name%></h5>
 <h4 class="title" style="float:left;">QQ空间</h4>
+</div>
+
 <p>好友列表</p>
 <ul>
 <s:iterator value="friends" >
