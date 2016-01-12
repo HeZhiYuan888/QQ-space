@@ -5,17 +5,23 @@
     <package name="default" extends="struts-default" namespace="/">  
    
     <interceptors>
-		<!-- 	定义了一个名为authority的拦截器 -->
+			<!-- 	定义了一个名为authority的拦截器 -->
 			<interceptor name="authority" class="base_action.QQInterceptor"/>
-		</interceptors> 
+			<!-- 	定义了一个名为mydefault的拦截器栈 -->
+			<interceptor-stack name="mydefault">
+				  <interceptor-ref name="defaultStack" />  
+                <interceptor-ref name="authority" />  
+			</interceptor-stack>
+	</interceptors> 
 		<global-results>
 				<result name="login" >/index.jsp</result>
 		</global-results>
+		
         <action name="ShowTitle" class="listShow.ShowTitle">
             <result name="success">/TitleList.jsp</result>
-            <result name="error">/error.jsp</result>                	
-       	  <interceptor-ref name="defaultStack"></interceptor-ref>
-       	   <interceptor-ref name="authority"></interceptor-ref>
+            <result name="error">/error.jsp</result>                	      	
+       	   <interceptor-ref name="mydefault" />  
+       	
         </action> 
         
         <action name="login" class="base_action.LoginAction">
@@ -26,32 +32,28 @@
         
         <action name="publish" class="base_action.Publish">
         	<result name="succ">/templates/vip/home.jsp</result>      
-       	  <interceptor-ref name="defaultStack"></interceptor-ref>
-       	   <interceptor-ref name="authority"></interceptor-ref>
+       	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
        	 
        	 <action name="AddComment" class="base_action.AddComment">
-     	 <param name="member">${member}</param> 
+      <param name="member">${member}</param> 
        	  <param name="member">${comment}</param> 
+       	    
        	 <result name="succ" type="chain">      	
-       	 <param name="actionName">login</param>       	      
-      	</result>           		
-       	  <interceptor-ref name="defaultStack"></interceptor-ref>
-       	   <interceptor-ref name="authority"></interceptor-ref>
+       	 <param name="actionName">login</param>       	     
+      	</result>         		
+      	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
       
        	 <action name="Transmit" class="base_action.Transmit">
        	 <result name="succ">/success.jsp</result>      	 
-       	  <interceptor-ref name="defaultStack"></interceptor-ref>
-       	  	 <interceptor-ref name="authority"></interceptor-ref>
+       	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
        	      
        
        	 <action name="AddZan" class="base_action.AddZan">  
        	 <result name="succ" >success.jsp</result>     	
-       	 
-       	   <interceptor-ref name="authority"></interceptor-ref>
-       	    <interceptor-ref name="defaultStack"></interceptor-ref>
+       	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
     </package>  
 </struts> 

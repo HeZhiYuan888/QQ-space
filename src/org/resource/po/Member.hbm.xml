@@ -22,6 +22,10 @@
         <property name="birthday" type="java.lang.String">
             <column name="BIRTHDAY" />
         </property>
+        <property name="headImg" type="java.lang.String">
+            <column name="HEADIMG" />
+        </property>
+        
         <set name="members"  table="selectedMembers" cascade="all" lazy="false">
         <key column="friendsid"/>
         <many-to-many  class="org.resource.po.Member" column="memberid"/>       

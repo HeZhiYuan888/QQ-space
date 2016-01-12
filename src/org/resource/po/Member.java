@@ -15,7 +15,16 @@ public class Member {
 	private Set<Member> friends=new HashSet<Member>();	
 	private Set<Member> members=new HashSet<Member>();
 	private Set titles=new HashSet();
+	private String headImg;
 	
+	public String getHeadImg() {
+		return headImg;
+	}
+
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
+	}
+
 	public Set getTitles() {
 		return titles;
 	}

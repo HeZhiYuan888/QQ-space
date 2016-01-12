@@ -16,19 +16,19 @@ response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 String name=mm.getName();%>
 <h5 style="float:right;">你好，<%=name%></h5>
 <h4 class="title" style="float:left;">QQ空间</h4>
+
+
+
 <p>好友列表</p>
 <ul>
 <s:iterator value="friends" >
 <li>
+<img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="headImg"/>" width="30" height="30" /><s:property value="member.getName()"/>
 <s:property value="name"/>
 </li>
 </s:iterator>
 </ul>
-
-<br>
-
-
-<br>
+<br><br>
 <h6><a href="templates/vip/publishSaySay.jsp">发表说说</a></h6>
 <div width="500px" height="100px" align="left">
 </div>
@@ -38,19 +38,14 @@ String name=mm.getName();%>
 <s:iterator value="listTitle">
 <form action="AddComment.action"  method="post" onsubmit="return checksubmit();">
 <tr>
-
-<tr><s:property value="member.getName()"/></tr>
+<tr><img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="member.getHeadImg()"/>" width="30" height="30" /><s:property value="member.getName()"/></tr>
 <tr><s:property  value="title_content"/></tr>
-
-
 <s:iterator id ="data" status="status" value="listComment">   
     <s:if test="person!=null">      
 		<a href="#"><s:property value="person"/></a>:<s:property value="content"/>
 		<br>
-	</s:if>
-	
-	<s:else>
-		
+	</s:if>	
+	<s:else>		
 		<a href="#"><s:property value="person1"/></a>回复<a href="#"><s:property value="person2"/></a>：
 		<s:property value="content"/>
 		<br>

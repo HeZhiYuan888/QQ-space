@@ -37,10 +37,9 @@ public class AddComment {
 		HttpServletRequest request = ServletActionContext.getRequest (); 
 		HttpSession session=request.getSession();
 		 member=(Member)session.getAttribute("vip");
-		 this.getComment().setComment_person(member.getVip_id());
-		 System.out.println("评论人的名字是++++++++++++++++++++++++++++"+this.getComment().getComment_person());
-		  CommentDao.savaComment(this.getComment());		  
-		  
+		 this.getComment().setMember(member);
+		 CommentDao.savaComment(this.getComment());		  
+		 	System.out.println("评论人的名字是++++++++++++++++++++++++++++"+this.getComment().getComment_person());		 		  
 			System.out.println("获取到的文章所属ID============================"+this.getComment().getComment_titleId());
 			System.out.println("评论时间=============================="+this.getComment().getComment_time());
 			System.out.println("评论内容=============================="+this.getComment().getComment_content());
