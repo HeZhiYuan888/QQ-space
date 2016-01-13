@@ -37,11 +37,11 @@
        	 
        	 <action name="AddComment" class="base_action.AddComment">
       <param name="member">${member}</param> 
-       	  <param name="member">${comment}</param> 
-       	    
-       	 <result name="succ" type="chain">      	
-       	 <param name="actionName">login</param>       	     
-      	</result>         		
+       	  <param name="member">${comment}</param>  
+       	   <!--  <result name="succ" type="redirectAction">login</result>  -->
+       	  <result name="succ" type="chain">      	
+        <param name="actionName">login</param>       	   
+    	</result>        
       	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
       

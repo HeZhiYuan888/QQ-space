@@ -14,12 +14,20 @@ response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 <body onload="getTime()">
   <%Member mm=(Member)session.getAttribute("vip");
 String name=mm.getName();%>
-<div >
-<h5 style="float:right;">你好，<%=name%></h5>
-<h4 class="title" style="float:left;">QQ空间</h4>
+<div class="top">
+<span class="img1"><img  src="<%=request.getContextPath()%>/imag/myspace.gif"></span>
+<span class="img2"><img src="<%=request.getContextPath()%>/imag/User.png"></span>
+<span class="img2"><img src="<%=request.getContextPath()%>/imag/homePagepng.png"></span>
+<span class="img2"><img src="<%=request.getContextPath()%>/imag/friends.png"></span>
+<span class="img2"><img src="<%=request.getContextPath()%>/imag/applications.png"></span>
+<h5>你好，<%=name%></h5>
 </div>
+<div class="mid">
+<span class="img3"><img src="<%=request.getContextPath()%>/imag/qq.jpg"></span><h2>好友动态</h2>
+</div>
+<div class="mainbody">
 
-<p>好友列表</p>
+<%-- <p>好友列表</p>
 <ul>
 <s:iterator value="friends" >
 <li>
@@ -30,14 +38,12 @@ String name=mm.getName();%>
 </ul>
 <br><br>
 <h6><a href="templates/vip/publishSaySay.jsp">发表说说</a></h6>
-<div width="500px" height="100px" align="left">
-</div>
 <div width="500px" height="10px" border="1px" color="red">
-<p2>好友动态</p2>
+ --%>
+
 <table width="1000px">
 <s:iterator value="listTitle">
 <form action="AddComment.action"  method="post" onsubmit="return checksubmit();">
-<tr>
 <tr><img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="member.getHeadImg()"/>" width="30" height="30" /><s:property value="member.getName()"/></tr>
 <tr><s:property  value="title_content"/></tr>
 <s:iterator id ="data" status="status" value="listComment">   
@@ -64,6 +70,7 @@ String name=mm.getName();%>
 </form>
 </s:iterator>
 </table>
+</div>
 </body>
 <script language="javascript">
 function show()
