@@ -11,10 +11,11 @@
 </filter>   
  <!-- <filter>
 	<filter-name>EcodeFilter</filter-name>
-	<filter-class>filter.EcodeFilter</filter-class>
+	<filter-class>filter.EcodeFilter</filter-class>	
 	<init-param>
 		<param-name>Ecode</param-name>
 		<param-value>GBK</param-value>
+		
 	</init-param>
 </filter>  -->
 <filter-mapping>   

@@ -79,8 +79,7 @@ public class LoginService {
 		map.put("title_time", title.getTitle_time());
 		map.put("member",title.getMember());
 	//	map.put("zan",title.getZan());
-		return map;
-		
+		return map;		
 	}
 	
 	// * 根据文章表中的title——host查询出member表中的name

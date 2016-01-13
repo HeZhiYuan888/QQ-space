@@ -36,8 +36,8 @@
        	 </action>
        	 
        	 <action name="AddComment" class="base_action.AddComment">
-      <param name="member">${member}</param> 
-       	  <param name="member">${comment}</param>  
+     	 <param name="member">${member}</param> 
+       	<!--   <param name="member">${comment}</param>   -->
        	   <!--  <result name="succ" type="redirectAction">login</result>  -->
        	  <result name="succ" type="chain">      	
         <param name="actionName">login</param>       	   
@@ -52,7 +52,10 @@
        	      
        
        	 <action name="AddZan" class="base_action.AddZan">  
-       	 <result name="succ" >success.jsp</result>     	
+       	 <param name="member">${member}</param> 
+       	 <result name="succ" type="chain">    
+       	 <param name="actionName">login</param>  
+       	 </result>          	      	
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
     </package>  

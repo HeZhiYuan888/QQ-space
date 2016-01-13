@@ -104,5 +104,16 @@ public class CommentDao {
 		return listComments;
 		
 	}
+	
+	public static Title loadTitle(int titleId)
+	{
+		Session session = HibernateUtil.currentSession();
+		Transaction transaction = session.beginTransaction();
+		Title title = (Title) session.load(Title.class, titleId);
+		transaction.commit();
+		HibernateUtil.closeSession();
+		return title;
+		
+	}
 
 }

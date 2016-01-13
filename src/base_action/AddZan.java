@@ -16,6 +16,15 @@ import vip.dao.CommentDao;
 public class AddZan {
 	private Title tit;
 	private String name;
+	private Member member;
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
 	private int nameid;
 	public int getNameid() {
 		return nameid;
@@ -24,15 +33,12 @@ public class AddZan {
 	public void setNameid(int nameid) {
 		this.nameid = nameid;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public Title getTit() {
 		return tit;
 	}
@@ -47,7 +53,7 @@ public class AddZan {
 		try {
 			HttpServletRequest request = ServletActionContext.getRequest();
 			HttpSession session = request.getSession();
-			Member member = (Member) session.getAttribute("vip");
+			member= (Member) session.getAttribute("vip");
 			Zan zan = new Zan();
 			zan.setZan_title_host(this.getNameid());
 			zan.setZan_person_id(member.getVip_id());
@@ -59,5 +65,4 @@ public class AddZan {
 		}
 		return "succ";
 	}
-
 }

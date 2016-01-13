@@ -26,7 +26,6 @@ String name=mm.getName();%>
 <span class="img3"><img src="<%=request.getContextPath()%>/imag/qq.jpg"></span><h2>好友动态</h2>
 </div>
 <div class="mainbody">
-
 <%-- <p>好友列表</p>
 <ul>
 <s:iterator value="friends" >
@@ -42,11 +41,11 @@ String name=mm.getName();%>
  --%>
 
 <table width="1000px">
+
 <s:iterator value="listTitle">
 <form action="AddComment.action"  method="post" onsubmit="return checksubmit();">
 <tr><img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="member.getHeadImg()"/>" width="30" height="30" /><s:property value="member.getName()"/></tr>
 <tr><s:property  value="title_content"/></tr>
-<!-- 评论部分的遍历 --开始>
 <s:iterator id ="data" status="status" value="listComment">   
     <s:if test="person!=null">      
 		<a href="#"><s:property value="person"/></a>:<s:property value="content"/>
@@ -58,12 +57,12 @@ String name=mm.getName();%>
 		<br>
 	</s:else>
 </s:iterator>
-<!-- 评论部分的遍历 --结束>
+
 <div align="left">
 <input type="submit"  value="点评">
 <a href="Transmit.action?title_id=<s:property value="title_id"/>&title.title_name=<s:property value="title_name"/>&title.title_content=<s:property value="title_content"/>&title_people_name=<s:property value="title_people_name"/>">转发</a>
 <a href="AddZan.action?tit.title_content=<s:property value="title_content"/>&name=<s:property value="member.getName()"/>&nameid=<s:property value="member.getVip_id()"/>&tit.title_id=<s:property value="title_id"/>"><span style="color:red;">赞(<s:property value="zan"/>)</span></a>
-<input type="hidden" name="comment.comment_titleId" value="<s:property value="title_host"/>">
+<input type="hidden" name="comment.comment_titleId" value="<s:property value="title_id"/>">
 <!-- 获取时间 -->
 <div id="hide" style="width:500px;height:100px;display:block;">
 <textarea name="comment.comment_content" cols="100" rows="5" id="textarea"></textarea>

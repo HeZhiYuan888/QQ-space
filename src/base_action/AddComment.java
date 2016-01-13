@@ -34,10 +34,11 @@ public class AddComment {
 		//设置评论时间
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		this.getComment().setComment_time(df.format(new Date()));
-		HttpServletRequest request = ServletActionContext.getRequest (); 
+		HttpServletRequest request = ServletActionContext.getRequest(); 
 		HttpSession session=request.getSession();
 		 member=(Member)session.getAttribute("vip");
 		 this.getComment().setMember(member);
+		 this.getComment().setTitle(CommentDao.loadTitle(this.getComment().getComment_titleId()));	
 		 CommentDao.savaComment(this.getComment());		  
 		 	System.out.println("评论人的名字是++++++++++++++++++++++++++++"+this.getComment().getComment_person());		 		  
 			System.out.println("获取到的文章所属ID============================"+this.getComment().getComment_titleId());
