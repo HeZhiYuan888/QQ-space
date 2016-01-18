@@ -101,8 +101,6 @@ public class TitleDao
 				
 				query.setParameterList("alist", listId);
 				List<Title> list0 =  query.list();	
-				
-			
 				tx.commit();
 				
 				for(int i=0;i<list0.size();i++)
@@ -118,8 +116,7 @@ public class TitleDao
 				//	map.put("title_people_name",new LoginService().selectTitleName(list0.get(i)));
 					//添加评论
 					map.put("listComment", listComment);
-					map.put("zan", zan);
-				
+					map.put("zan", zan);				
 					list.add(map);	
 							
 				}
@@ -145,9 +142,55 @@ public class TitleDao
 		return titles;*/
 	}
 	
-	 /** 删除一组数据
-	 * 输入一个待删除对象 
-	 * 2015.10.13*/
+	/**
+	 * @author 老贺
+	 * @param id
+	 * @return null
+	 * @time 2016-1-15
+	 */
+	public  static Set findTitles(int id)
+	{
+		Session session=HibernateUtil.currentSession();			
+		Transaction tx = session.beginTransaction();
+		Set titless=null;
+			try {
+				Member mm = (Member) session.load(Member.class, id);	
+					titless = mm.getTitles();			
+				tx.commit();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			finally
+			{
+				HibernateUtil.closeSession();
+			}
+		return titless;
+		
+	}
+	public static boolean deleteTitle(int titleId)
+	{
+		boolean b=false;
+		Session session = HibernateUtil.currentSession();
+		Transaction tx=session.beginTransaction();
+		Title title = (Title) session.load(Title.class,titleId);
+		Member member = (Member) session.load(Member.class,title.getMember().getVip_id());
+		Iterator it = member.getTitles().iterator();
+		while(it.hasNext())
+		{
+			Title title0 = (Title) it.next();
+			if(title0.getTitle_id()==titleId)
+			{
+				it.remove();
+				session.delete(title0);
+				b=true;
+			}
+		}
+		tx.commit();
+		HibernateUtil.closeSession();
+		return b;
+	}
 	 
 	public static void delete(int id)
 	{
@@ -198,4 +241,6 @@ public class TitleDao
 			HibernateUtil.closeSession();
 		}
 	}
+	
+	
 }

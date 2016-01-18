@@ -58,5 +58,13 @@
        	 </result>          	      	
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
+       	 
+       	 <action name="MainPage" class="base_action.MainPage">
+       	 	<result name="succ">/templates/vip/mainPage.jsp</result>
+       	 </action>
+       	 
+       	 <action name="DeleteTitle" class="base_action.DeleteTitle">
+       	 	<result name="succ" type="redirectAction">MainPage</result>
+       	 </action>
     </package>  
 </struts> 

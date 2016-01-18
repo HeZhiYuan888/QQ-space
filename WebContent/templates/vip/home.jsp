@@ -8,20 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <title>QQ空间</title>
-<%request.setCharacterEncoding("UTF-8");//传值编码
-response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 </head>
-<body onload="getTime()">
-  <%Member mm=(Member)session.getAttribute("vip");
-String name=mm.getName();%>
-<div class="top">
-<span class="img1"><img  src="<%=request.getContextPath()%>/imag/myspace.gif"></span>
-<span class="img2"><img src="<%=request.getContextPath()%>/imag/User.png"></span>
-<span class="img2"><img src="<%=request.getContextPath()%>/imag/homePagepng.png"></span>
-<span class="img2"><img src="<%=request.getContextPath()%>/imag/friends.png"></span>
-<span class="img2"><img src="<%=request.getContextPath()%>/imag/applications.png"></span>
-<h5>你好，<%=name%></h5>
-</div>
+<body>
+ <%@include file="/templates/common/head.jsp"%>
 <div class="mid">
 <span class="img3"><img src="<%=request.getContextPath()%>/imag/qq.jpg"></span><h2>好友动态</h2>
 </div>
@@ -39,9 +28,7 @@ String name=mm.getName();%>
 <h6><a href="templates/vip/publishSaySay.jsp">发表说说</a></h6>
 <div width="500px" height="10px" border="1px" color="red">
  --%>
-
 <table width="1000px">
-
 <s:iterator value="listTitle">
 <form action="AddComment.action"  method="post" onsubmit="return checksubmit();">
 <tr><img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="member.getHeadImg()"/>" width="30" height="30" /><s:property value="member.getName()"/></tr>
@@ -57,7 +44,6 @@ String name=mm.getName();%>
 		<br>
 	</s:else>
 </s:iterator>
-
 <div align="left">
 <input type="submit"  value="点评">
 <a href="Transmit.action?title_id=<s:property value="title_id"/>&title.title_name=<s:property value="title_name"/>&title.title_content=<s:property value="title_content"/>&title_people_name=<s:property value="title_people_name"/>">转发</a>

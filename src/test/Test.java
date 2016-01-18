@@ -2,6 +2,7 @@ package test;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
@@ -145,9 +146,7 @@ public class Test
 		session.save(mm1);
 		session.save(mm2);
 		*/
-		
-	
-		
+			
 	//	Criteria criteria = session.createCriteria(Title.class);
 	//	criteria.add(Restrictions.or(Restrictions.eq("title_host", 1),Restrictions.eq("title_host", 2)));
 	//	Iterator it=criteria.list().iterator();
@@ -195,15 +194,33 @@ public class Test
 		//Query query = session.createSQLQuery("update Title set Zan=Zan+1 where title_id =2");
 		
 	//	query.executeUpdate();
-		Session session=HibernateUtil.currentSession();			
+		/*Session session=HibernateUtil.currentSession();			
 		Transaction tx = session.beginTransaction();
-		Title title = (Title) session.load(Title.class, 1);		
-		int zan = ZanDao.zanCount(title);
-		System.out.println("赞："+zan);
-
 		
+		Member mm = (Member) session.load(Member.class, 0);		
+		for(Iterator it = mm.getTitles().iterator();it.hasNext();)
+		{
+		Title tt=	(Title) it.next();
+		System.out.println("内容是："+tt.getTitle_content());
+		}*/
+		//
 		
-		
-	
+		Session session=HibernateUtil.currentSession();			
+		Transaction tx = session.beginTransaction();		
+		Member member = (Member) session.load(Member.class, 0);
+		Set set=member.getTitles();
+		Iterator it=member.getTitles().iterator();
+		while(it.hasNext())
+		{
+			Title title = (Title) it.next();
+			if(title.getTitle_id()==6)
+			{
+				System.out.println("6666");
+				it.remove();				
+				session.delete(title);
+			}			
+		}
+		tx.commit();		
+		HibernateUtil.closeSession();	
 	}
 }

@@ -38,9 +38,7 @@
 	<property name="hbm2ddl.auto">update</property>
 	 <mapping resource="org/resource/po/Member.hbm.xml"/> 
 	 <mapping resource="org/resource/po/Comment.hbm.xml"/>
-	 
-	
-	 <mapping resource="org/resource/po/Zan.hbm.xml"/>  
+		<mapping resource="org/resource/po/Zan.hbm.xml"/>  
 	   <mapping resource="org/resource/po/Title.hbm.xml"/> 
 	  
 	  

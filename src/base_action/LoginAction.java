@@ -106,6 +106,8 @@ public class LoginAction extends HttpServlet {
 	
 	public String execute()	
 	 {		
+		System.out.println("我娶过来的账号："+member.getVip_id());
+		System.out.println("我娶过来的密码"+member.getPassword());
 			boolean b=LoginService.checkLogin(member.getVip_id(),member.getPassword());	
 			System.out.println("返回值："+b);		
 			if(b)
