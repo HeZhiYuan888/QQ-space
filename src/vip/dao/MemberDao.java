@@ -67,4 +67,17 @@ public class MemberDao
 			HibernateUtil.closeSession();
 		}	
 	}
+	/**
+	 * @author 老贺
+	 * @param vip_id
+	 * @return Member对象
+	 * @date 2016-1-20
+	 */
+	public static  Member findMember(int id)
+	{
+		Session session = HibernateUtil.currentSession();
+		Member member = (Member) session.load(Member.class, id);
+		return member;
+	}
+	
 }

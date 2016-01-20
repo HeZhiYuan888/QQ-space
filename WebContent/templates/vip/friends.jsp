@@ -14,9 +14,10 @@
 <ul>
 <s:iterator value="friends" >
 <li>
-<img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="headImg"/>" width="30" height="30" /><s:property value="member.getName()"/>
-<s:property value="name"/>
+<img alt="img" src="<%=request.getContextPath()%>/imag/<s:property value="headImg"/>" width="30" height="30" />
+<a href="MainPage.action?visitor=<s:property value="vip_id"/>"><s:property value="name"/></a>
 </li>
+
 </s:iterator>
 </ul>
 </body>

@@ -54,16 +54,12 @@
         	 <result name="succ" type="chain"> 
         	   <param name="actionName">login</param>              	        
       		 </result>   	 
-      		<!-- <result name="succ" type="redirectAction">
-      		<param name="actionName">login</param>
-      		<param name="member">${member}</param> 
-     	     </result> 	 -->
-     	      <!--  <result name="succ">/TitleList.jsp</result>  -->
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
        	 
        	 <action name="MainPage" class="base_action.MainPage">
        	 	<result name="succ">/templates/vip/mainPage.jsp</result>
+       	 	 <interceptor-ref name="mydefault" />  
        	 </action>
        	 
        	 <action name="DeleteTitle" class="base_action.DeleteTitle">
@@ -72,6 +68,7 @@
        	 
        	 <action name="ListFriends"  class="base_action.ListFriends">
        	 <result name="succ">/templates/vip/friends.jsp</result>
+       	  <interceptor-ref name="mydefault" />  
        	 </action>
     </package>  
 </struts> 
