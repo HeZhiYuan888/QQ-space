@@ -1,5 +1,4 @@
 package vip.dao;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,8 +20,6 @@ import org.resource.po.Title;
 import org.util.HibernateUtil;
 
 import viq.service.LoginService;
-
-
 
 public class TitleDao 
 {
@@ -53,8 +50,7 @@ public class TitleDao
 									list.add(124);
 									list.add(125);
 									System.out.println(list.size());
-								 session=HibernateUtil.currentSession();		
-								
+								 session=HibernateUtil.currentSession();										
 								tx = session.beginTransaction();	
 								Title tt=new Title();
 								tt.setTitle_content("这是我的内容。。。。。");
@@ -106,7 +102,7 @@ public class TitleDao
 				for(int i=0;i<list0.size();i++)
 				{				
 					List listComment = new ArrayList();
-					int zan;
+					int zan=0;
 					Map map=new HashMap();
 					Title title = list0.get(i);		
 					//添加评论					
@@ -151,15 +147,16 @@ public class TitleDao
 	public  static Set findTitles(int id)
 	{
 		Session session=HibernateUtil.currentSession();			
-		Transaction tx = session.beginTransaction();
+	//	Transaction tx = session.beginTransaction();
 		Set titless=null;
 			try {
 				Member mm = (Member) session.load(Member.class, id);	
 					titless = mm.getTitles();			
-				tx.commit();
+	//			tx.commit();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+	//			tx.rollback();
 			}
 
 			finally
@@ -226,8 +223,7 @@ public class TitleDao
 		{
 			query.setParameter(i,params[i]);
 		}
-		try {
-			
+		try {			
 			query.executeUpdate();
 			  int n = query.executeUpdate();
 	            System.out.println("query influence: " + n);

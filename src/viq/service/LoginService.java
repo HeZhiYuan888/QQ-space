@@ -54,7 +54,7 @@ public class LoginService {
 	public  Member selectName(Member mem)
 	{
 		Session session=HibernateUtil.currentSession();
-		Transaction transaction = session.beginTransaction();
+	//	Transaction transaction = session.beginTransaction();
 		List list=new ArrayList<Member>();
 		int id=mem.getVip_id();
 		String que="from Member as m where m.vip_id="+id+"";

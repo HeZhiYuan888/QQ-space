@@ -18,11 +18,8 @@
 
 	 	<a  href="DeleteTitle.action?titleId=<s:property value="title_id"/>" onClick="return confirm('确定删除?');">删除</a>
 		
-	  <a href="#">修改</a><br> <br>
+	  <a href="#">修改</a><br><br>
   </s:iterator>
-<script language="javascript">
-  
-  
-  </script>
+
 </body>
 </html>

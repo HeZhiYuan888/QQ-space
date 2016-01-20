@@ -15,8 +15,7 @@
 	</interceptors> 
 		<global-results>
 				<result name="login" >/index.jsp</result>
-		</global-results>
-		
+		</global-results>		
         <action name="ShowTitle" class="listShow.ShowTitle">
             <result name="success">/TitleList.jsp</result>
             <result name="error">/error.jsp</result>                	      	
@@ -49,13 +48,17 @@
        	 <result name="succ">/success.jsp</result>      	 
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
-       	      
-       
+ 
        	 <action name="AddZan" class="base_action.AddZan">  
-       	 <param name="member">${member}</param> 
-       	 <result name="succ" type="chain">    
-       	 <param name="actionName">login</param>  
-       	 </result>          	      	
+			<param name="member">${member}</param>  
+        	 <result name="succ" type="chain"> 
+        	   <param name="actionName">login</param>              	        
+      		 </result>   	 
+      		<!-- <result name="succ" type="redirectAction">
+      		<param name="actionName">login</param>
+      		<param name="member">${member}</param> 
+     	     </result> 	 -->
+     	      <!--  <result name="succ">/TitleList.jsp</result>  -->
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
        	 
@@ -65,6 +68,10 @@
        	 
        	 <action name="DeleteTitle" class="base_action.DeleteTitle">
        	 	<result name="succ" type="redirectAction">MainPage</result>
+       	 </action>
+       	 
+       	 <action name="ListFriends"  class="base_action.ListFriends">
+       	 <result name="succ">/templates/vip/friends.jsp</result>
        	 </action>
     </package>  
 </struts> 

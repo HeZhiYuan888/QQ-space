@@ -22,7 +22,7 @@
 		false
 	</property>
 	<property name="hibernate.show_sql">true</property>
-	<property name="hibernate.connection.pool_size">20</property>
+	<property name="hibernate.connection.pool_size">50</property>
 	<property name="hibernate.proxool.pool_alias">pool1</property>
 	<property name="hibernate.max_fetch_depth">1</property>
 	<property name="hibernate.jdbc.batch_versioned_data">true</property>
@@ -40,7 +40,6 @@
 	 <mapping resource="org/resource/po/Comment.hbm.xml"/>
 		<mapping resource="org/resource/po/Zan.hbm.xml"/>  
 	   <mapping resource="org/resource/po/Title.hbm.xml"/> 
-	  
-	  
+ 
 </session-factory>
 </hibernate-configuration>

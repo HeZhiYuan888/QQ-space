@@ -9,7 +9,6 @@ import org.resource.po.Title;
 import com.opensymphony.xwork2.ActionContext;
 
 import vip.dao.TitleDao;
-
 public class MainPage {
 	private Set titles;
 	public Set getTitles() {
@@ -18,7 +17,7 @@ public class MainPage {
 	
 	public void setTitles(Set titles) {
 		this.titles = titles;
-	}
+	}	
 	public String execute()
 	{
 		Member member = (Member)ActionContext.getContext().getSession().get("vip");

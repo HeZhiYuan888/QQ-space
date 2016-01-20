@@ -1,5 +1,8 @@
 package base_action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,11 +15,13 @@ import com.opensymphony.xwork2.ActionContext;
 
 import vip.dao.BasicDao;
 import vip.dao.CommentDao;
+import vip.dao.ZanDao;
 
 public class AddZan {
 	private Title tit;
 	private String name;
 	private Member member;
+	private int nameid;
 	public Member getMember() {
 		return member;
 	}
@@ -25,7 +30,6 @@ public class AddZan {
 		this.member = member;
 	}
 
-	private int nameid;
 	public int getNameid() {
 		return nameid;
 	}
@@ -49,17 +53,21 @@ public class AddZan {
 
 	public String execute()
 	{
-		System.out.println("找到点赞的action");		
+		System.out.println("找到点赞的action-----------------------------------------");		
 		try {
 			HttpServletRequest request = ServletActionContext.getRequest();
 			HttpSession session = request.getSession();
-			member= (Member) session.getAttribute("vip");
+			this.setMember((Member) session.getAttribute("vip"));
 			Zan zan = new Zan();
 			zan.setZan_title_host(this.getNameid());
-			zan.setZan_person_id(member.getVip_id());
-			zan.setZan_person_name(member.getName());
+			zan.setZan_person_id(this.getMember().getVip_id());
+			zan.setZan_person_name(this.getMember().getName());
 			zan.setTitle(this.getTit());
-			BasicDao.InsertObject(zan);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			zan.setZan_time(df.format(new Date()));
+			//BasicDao.InsertObject(zan);
+			ZanDao.addZan(zan);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

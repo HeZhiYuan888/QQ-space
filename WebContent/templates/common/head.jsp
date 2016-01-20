@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <title>QQ空间</title>
 <%request.setCharacterEncoding("UTF-8");//传值编码
 response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
@@ -19,7 +18,7 @@ String name=mm.getName();
 <span class="img1"><img src="<%=request.getContextPath()%>/imag/myspace.gif"></span>
 <span class="img2"><a href="#">个人中心<img src="<%=request.getContextPath()%>/imag/User.png"></a></span>
 <span class="img2"><a href="MainPage.action"><img src="<%=request.getContextPath()%>/imag/homePagepng.png">我的主页</a></span>
-<span class="img2"><img src="<%=request.getContextPath()%>/imag/friends.png">好友</span>
+<span class="img2"><a href="ListFriends.action"><img src="<%=request.getContextPath()%>/imag/friends.png">好友</span>
 <span class="img2"><img src="<%=request.getContextPath()%>/imag/applications.png">应用</span>
 <%-- <h5>你好，<%=name%></h5> --%>
 </div>

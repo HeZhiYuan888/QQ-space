@@ -14,10 +14,10 @@ public  class FriendService {
 	public static Set listFriends(Member member)
 	{
 		Session session = HibernateUtil.currentSession();
-		Transaction transaction = session.beginTransaction();
+	//	Transaction transaction = session.beginTransaction();
 		Member mb=(Member) session.load(Member.class, member.getVip_id());
 		Set friends=mb.getFriends();		
-		transaction.commit();
+	//	transaction.commit();
 		HibernateUtil.closeSession();
 		return friends;			
 	}

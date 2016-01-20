@@ -81,7 +81,7 @@ public class CommentDao {
 	public static List listComments(Title title)
 	{
 		Session session=HibernateUtil.currentSession();
-		Transaction transaction=session.beginTransaction();
+	//	Transaction transaction=session.beginTransaction();
 		Title tt=(Title) session.load(Title.class, title.getTitle_id());
 		Iterator it = tt.getComments().iterator();
 		List listComments = new ArrayList();
@@ -99,7 +99,7 @@ public class CommentDao {
 					
 		}
 
-		transaction.commit();
+//		transaction.commit();
 		HibernateUtil.closeSession();
 		return listComments;
 		
