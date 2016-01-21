@@ -70,5 +70,14 @@
        	 <result name="succ">/templates/vip/friends.jsp</result>
        	  <interceptor-ref name="mydefault" />  
        	 </action>
+       	 
+       	 <action name="PersonCenter" class="base_action.PersonCenter">  
+			<param name="member">${member}</param>  
+        	 <result name="succ" type="chain"> 
+        	   <param name="actionName">login</param>              	        
+      		 </result>   	 
+       	 	  <interceptor-ref name="mydefault"></interceptor-ref>
+       	 </action>
+       	 
     </package>  
 </struts> 

@@ -1,7 +1,6 @@
 package filter;
 
 import java.io.IOException;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,17 +15,12 @@ import javax.servlet.http.HttpSession;
 
 import org.resource.po.Member;
 
-
 public class EcodeFilter implements Filter{
 	private String Ecode;
-
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
+		// TODO Auto-generated method stub		
+	}	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse  response, FilterChain chain)
 			throws IOException, ServletException {
