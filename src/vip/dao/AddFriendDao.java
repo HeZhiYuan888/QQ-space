@@ -9,13 +9,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+
+
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.resource.po.ApplyFriend;
 import org.resource.po.Member;
 import org.util.HibernateUtil;
 
-import javassist.bytecode.Descriptor.Iterator;
 
 /**
  * @authorAdministrator
@@ -61,10 +68,37 @@ public class AddFriendDao {
 			map.put("ApplyFriend",af);			
 			Member mem = (Member) session.load(Member.class, af.getApplyId());
 			map.put("name", mem.getName());
+			map.put("accmemberId", mem.getVip_id());
 			list.add(map);
 		}
 		HibernateUtil.closeSession();
 		System.out.println("list尺寸"+list.size());
 		return list;
 	}
+	public static void handleApply(int id, int stateId) 
+	{
+		Session session=HibernateUtil.currentSession();
+		Transaction transaction=session.beginTransaction();
+	
+			
+			try {
+				ApplyFriend af = (ApplyFriend) session.load(ApplyFriend.class, id);
+				af.setStateId(stateId);
+				session.update(af);
+				transaction.commit();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				transaction.rollback();
+			}
+			
+		
+		finally
+		{
+			HibernateUtil.closeSession();
+			
+		}
+		
+	}
+	
 }

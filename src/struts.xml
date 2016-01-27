@@ -79,10 +79,27 @@
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
        	 
-       	  <action name="AddFriend"  class="base_action.AddFriend">
+       	 <!--  <action name="AddFriend"  class="base_action.AddFriend">
        	 <result name="succ">/templates/vip/friends.jsp</result>
        	  <interceptor-ref name="mydefault" />  
+       	 </action> -->
+       	 
+       	  <action name="AddFriend"  class="base_action.AddFriend">
+       <result name="succ" type="redirectAction">ListFriends</result>
+       	  <interceptor-ref name="mydefault"/>  
        	 </action>
        	 
+       	 <action name="agree" class="base_action.HandleApply" method="agree">
+     <result name="succ">/success.jsp</result>
+        <interceptor-ref name="mydefault"/>  
+       	 </action>
+       	 <action name="disagree" class="base_action.HandleApply" method="disagree">
+       <result name="succ" type="redirectAction">ListFriends</result>
+        <interceptor-ref name="mydefault"/>  
+       	 </action>
+       	 <action name="ignore" class="base_action.HandleApply" method="ignore">
+        <result name="succ" type="redirectAction">ListFriends</result>
+        <interceptor-ref name="mydefault"/>  
+       	 </action>
     </package>  
 </struts> 

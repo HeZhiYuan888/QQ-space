@@ -22,24 +22,39 @@
 
 <h5>通知</h5>
 <s:iterator value="list">
-	<s:property value="name"/>申请添加你为好友，
-	<%-- <s:iterator value="ApplyFriend"> --%>
+	<a href="MainPage.action?visitor=<s:property value="accmemberId"/>"><s:property value="name"/></a>申请添加你为好友，
 	备注：<s:property value="ApplyFriend.getRemarks()"/> <s:property value="ApplyFriend.getDate()"/>
+	
+
+	<form  action="agree.action" method="post">
+	<input type="submit" value="同意">
+	<input type="hidden" name="applyId" value="<s:property value="ApplyFriend.getId()"/>">	
+	</form>
+
+	<form action ="disagree.action"  method="post">	
+	<input type="submit" value="拒绝">	
+	</form>
+
+	<form  action="ignore.action" method="post">
+	<input type="submit" value="忽略">
+	</form>
 </s:iterator>
 	<br>
+	
 <s:iterator value="applyFriendList">
 	<s:if test="stateId==1">
-	<s:property value="accmember.getName()"/>同意添加你为好友！<br>
+	<a href="MainPage.action?visitor=<s:property value="accmember.getVip_id()"/>"><s:property value="accmember.getName()"/></a>同意添加你为好友！<br>
 	</s:if>
+	
 	<s:elseif test="stateId==2">
-	<s:property value="accmember.getName()"/>拒绝了你的好友请求！<br>
+	<a href="MainPage.action?visitor=<s:property value="accmember.getVip_id()"/>"><s:property value="accmember.getName()"/></a>拒绝了你的好友请求！<br>
 	</s:elseif>
 </s:iterator>
 
 <br><h5>最近活动记录</h5>
 <s:iterator value="applyFriendList">
 <s:if test="stateId==0">
-申请添加<s:property value="accmember.getName()"/>为好友，正在等待对方回应。<br>
+申请添加<a href="MainPage.action?visitor=<s:property value="accmember.getVip_id()"/>"><s:property value="accmember.getName()"/></a>为好友，正在等待对方回应。<br>
 </s:if>
 </s:iterator>
 
