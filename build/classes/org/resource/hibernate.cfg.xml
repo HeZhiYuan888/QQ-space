@@ -40,6 +40,7 @@
 	 <mapping resource="org/resource/po/Comment.hbm.xml"/>
 		<mapping resource="org/resource/po/Zan.hbm.xml"/>  
 	   <mapping resource="org/resource/po/Title.hbm.xml"/> 
+	   <mapping resource="org/resource/po/ApplyFriend.hbm.xml"/> 
  
 </session-factory>
 </hibernate-configuration>

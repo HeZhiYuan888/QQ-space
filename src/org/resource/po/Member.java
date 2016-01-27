@@ -15,8 +15,19 @@ public class Member {
 	private Set<Member> friends=new HashSet<Member>();	
 	private Set<Member> members=new HashSet<Member>();
 	private Set titles=new HashSet();
-	private String headImg;
+	private String headImg;	
+	private Set applies=new HashSet();
+//	private ApplyFriend applyFriend;
+	public Set getApplies(){
+		return applies;
+	}
+
+	public void setApplies(Set applies) {
+		this.applies = applies;
+	}
+
 	
+
 	public String getHeadImg() {
 		return headImg;
 	}

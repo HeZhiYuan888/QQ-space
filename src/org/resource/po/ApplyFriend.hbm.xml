@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.resource.po.ApplyFriend" table="ApplyFriend">
+    <id name="id" type="int" >
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+           
+        <property name="applyId" type="int">
+            <column name="applyId" />
+        </property>
+        
+         <property name="stateId" type="int">
+            <column name="stateId" />
+        </property>
+        
+       <property name="date" type="java.lang.String">
+            <column name="date"/>
+        </property>
+        
+       <property name="remarks" type="java.lang.String">
+            <column name="remarks"/>
+        </property>
+        
+        <many-to-one name="accmember" 
+        class="org.resource.po.Member" 
+        column="memberid" 
+        lazy="false" 
+      	not-null="true"/>
+      	
+      <!-- 	<many-to-one name="appmember" 
+      	class="org.resource.po.Member" 
+      	column="appliesid" lazy="false" 
+      	cascade="all" 
+      	unique="true"/>        -->
+         </class>
+        </hibernate-mapping>

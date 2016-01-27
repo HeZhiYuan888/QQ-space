@@ -108,9 +108,9 @@ public class CommentDao {
 	public static Title loadTitle(int titleId)
 	{
 		Session session = HibernateUtil.currentSession();
-		Transaction transaction = session.beginTransaction();
+	//	Transaction transaction = session.beginTransaction();
 		Title title = (Title) session.load(Title.class, titleId);
-		transaction.commit();
+	//	transaction.commit();
 		HibernateUtil.closeSession();
 		return title;
 		

@@ -11,21 +11,20 @@ public class BasicDao {
 	 */
 	public static void InsertObject(Object object)
 	{
-		Session session=HibernateUtil.currentSession();
-		Transaction transaction=session.beginTransaction();
-		
-	try {
-		//	Query query=session.createQuery("");
-		session.save(object);
-		transaction.commit();
-	} catch (Exception e) {
-		// TODO: handle exception
-		transaction.rollback();
+			Session session=HibernateUtil.currentSession();
+			Transaction transaction=session.beginTransaction();
+			
+		try {
+			//	Query query=session.createQuery("");
+			session.save(object);
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			transaction.rollback();
+		}
+		finally
+		{
+			HibernateUtil.closeSession();
+		}
 	}
-	finally
-	{
-		HibernateUtil.closeSession();
-	}
-	}
-
 }

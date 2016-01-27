@@ -40,7 +40,13 @@
         <key column="memberid"/>
         <one-to-many class="org.resource.po.Title"/>
         </set>
-      
+      	
+      	<set name="applies" cascade="all" inverse="true" lazy="false">
+      		<key column="memberid"/>
+      		<one-to-many class="org.resource.po.ApplyFriend"/>     		
+      	</set>
+      	
+      	<!-- <one-to-one name="applyFriend" class="org.resource.po.ApplyFriend" property-ref="appmember"/> -->
     </class>
 </hibernate-mapping>
  

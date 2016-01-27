@@ -79,5 +79,18 @@ public class MemberDao
 		Member member = (Member) session.load(Member.class, id);
 		return member;
 	}
-	
+	/**
+	 * @author Administrator laohe
+	 * @params Member 
+	 * @return Member
+	 * @date 2016-1-26
+	 */
+	public static Member loadMember(Member member)
+	{
+		Session session = HibernateUtil.currentSession();
+		//Transaction tx= session.beginTransaction();
+		Member mm = (Member) session.load(Member.class, member.getVip_id());
+		HibernateUtil.closeSession();
+		return mm;
+	}
 }

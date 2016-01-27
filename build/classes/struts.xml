@@ -79,5 +79,10 @@
        	 	  <interceptor-ref name="mydefault"></interceptor-ref>
        	 </action>
        	 
+       	  <action name="AddFriend"  class="base_action.AddFriend">
+       	 <result name="succ">/templates/vip/friends.jsp</result>
+       	  <interceptor-ref name="mydefault" />  
+       	 </action>
+       	 
     </package>  
 </struts> 

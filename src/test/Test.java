@@ -1,7 +1,9 @@
 package test;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Criteria;
@@ -10,14 +12,16 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
-
+import org.resource.po.ApplyFriend;
 import org.resource.po.Comment;
 import org.resource.po.Member;
 import org.resource.po.Title;
 import org.resource.po.Zan;
 import org.util.HibernateUtil;
 
+import vip.dao.AddFriendDao;
 import vip.dao.CommentDao;
 import vip.dao.TitleDao;
 import vip.dao.ZanDao;
@@ -205,7 +209,7 @@ public class Test
 		}*/
 		//
 		
-		Session session=HibernateUtil.currentSession();			
+		/*Session session=HibernateUtil.currentSession();			
 		Transaction tx = session.beginTransaction();		
 		Member member = (Member) session.load(Member.class, 0);
 		Set set=member.getTitles();
@@ -221,6 +225,102 @@ public class Test
 			}			
 		}
 		tx.commit();		
-		HibernateUtil.closeSession();	
+		HibernateUtil.closeSession();	*/
+		//分页1111111
+		/*Session session=HibernateUtil.currentSession();			
+		Transaction tx = session.beginTransaction();
+		int pageNo=1;
+		int pageSize=3;
+		Criteria criteria =session.createCriteria(Zan.class);
+		criteria.setFirstResult(98);
+		criteria.setMaxResults(1);
+		Iterator it= criteria.list().iterator();
+		tx.commit();
+		HibernateUtil.closeSession();
+		while(it.hasNext())
+		{
+			Zan tt = (Zan) it.next();
+			System.out.println("文章内容是："+tt.getZan_id());
+		}		
+		*/
+		//分页222222
+		/*Session session=HibernateUtil.currentSession();			
+		Query q = session.createSQLQuery("select title_id from Title order by title_id limit ? offset ? ");
+		q.setParameter(0, 1);
+		q.setParameter(1, 0);
+		q.setFirstResult(1);
+		q.setMaxResults(1);
+		List l = q.list();
+		Iterator it=l.iterator();
+		while(it.hasNext())
+		{		
+						
+			System.out.println(it.next().toString());
+			
+		}*/
+		
+		
+	
+		
+		/*Session session=HibernateUtil.currentSession();	
+		Transaction tx = session.beginTransaction();
+		ApplyFriend af=new ApplyFriend();
+		
+		Member member =(Member) session.load(Member.class, 0);
+		Member appmember =(Member) session.load(Member.class, 1);
+		af.setAccmember(member);		
+		af.setStateId(0);
+		af.setAppmember(appmember);
+		session.save(af);
+		tx.commit();
+		HibernateUtil.closeSession();*/
+	
+		/*Session session=HibernateUtil.currentSession();
+		Member member  = (Member) session.load(Member.class, 0);
+		if(member.getApplies().size()!=0)
+		{
+			System.out.println("你有好友申请。");
+			Set aps = member.getApplies();
+			Iterator it = aps.iterator();
+			while(it.hasNext())				
+			{
+				ApplyFriend af=(ApplyFriend)it.next();
+			}
+		}*/
+		//被申请人查看   他人申请自己为好友
+		/*Session session=HibernateUtil.currentSession();
+		Member member  = (Member) session.load(Member.class, 0);		
+		Iterator it = member.getApplies().iterator();
+		
+		
+			ApplyFriend af = (ApplyFriend) it.next();
+			System.out.println("状态"+af.getStateId());
+
+		
+		HibernateUtil.closeSession();*/
+		//申请人查看自己的申请状态
+	/*	Session session=HibernateUtil.currentSession();
+		Member member  = (Member) session.load(Member.class, 1);	
+		ApplyFriend af=member.getApplyFriend();
+		System.out.println("状态"+af.getStateId());
+		HibernateUtil.closeSession();*/
+	
+		/*Session session=HibernateUtil.currentSession();
+		Query query = session.createQuery("from ApplyFriend a where a.appmember=1");
+		List<ApplyFriend> af = query.list();
+		System.out.println(af.get(0).getId());
+		HibernateUtil.closeSession();
+		*/
+		Session session=HibernateUtil.currentSession();
+		Member member = (Member) session.load(Member.class, 3);
+		List list = new ArrayList();
+		 list=AddFriendDao.appliesList(member);
+		 System.out.println("尺寸"+ list.size());
+		for(int i=0;i< list.size();i++)
+		{
+			System.out.println( list.get(0).toString());
+			
+		}
+		HibernateUtil.closeSession();
 	}
 }

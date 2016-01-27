@@ -22,7 +22,7 @@ response.setContentType("text/html;charset=UTF-8");//设置传输编码 %>
 <span class="img1"><img src="<%=request.getContextPath()%>/imag/myspace.gif"></span>
 <span class="img2"><a href="PersonCenter.action">个人中心<img src="<%=request.getContextPath()%>/imag/User.png"></a></span>
 <span class="img2"><a href="MainPage.action?visitor=<%=visitor%>"><img src="<%=request.getContextPath()%>/imag/homePagepng.png">我的主页</a></span>
-<span class="img2"><a href="ListFriends.action"><img src="<%=request.getContextPath()%>/imag/friends.png">好友</span>
+<span class="img2"><a href="ListFriends.action"><img src="<%=request.getContextPath()%>/imag/friends.png">好友</a></span>
 <span class="img2"><img src="<%=request.getContextPath()%>/imag/applications.png">应用</span>
  <h5>你好，<%=name%></h5>
 </div>

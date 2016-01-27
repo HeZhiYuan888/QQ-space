@@ -7,6 +7,12 @@ body
 	/* background-image: url("../imag/background.jpg"); */
 	background-repeat: no-repeat;
 }
+
+p:first-child::first-letter{
+  font-family: "papyrus";
+  font-size: 28px;
+  font-weight: bold;
+}
 .top
 {
 	float:left;
@@ -92,4 +98,15 @@ background-repeat:no-repeat;
 	text-align:center;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+button {
+    padding: 15px;
+    background-image: linear-gradient(#FC6E51, #FFF);
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 0.5s;
+}    
+button:hover {
+    background-position: 0 0;
 }

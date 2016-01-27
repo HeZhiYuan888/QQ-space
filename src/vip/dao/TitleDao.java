@@ -93,8 +93,7 @@ public class TitleDao
 					
 				}
 				
-				Query query = session.createQuery("from Title as tt where tt.title_host in(:alist)");
-				
+				Query query = session.createQuery("from Title as tt where tt.title_host in(:alist)");				
 				query.setParameterList("alist", listId);
 				List<Title> list0 =  query.list();	
 				tx.commit();
