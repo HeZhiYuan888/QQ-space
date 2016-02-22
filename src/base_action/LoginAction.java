@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -106,6 +108,7 @@ public class LoginAction extends HttpServlet {
 	
 	public String execute()	
 	 {		
+		
 		System.out.println("我娶过来的账号："+member.getVip_id());
 		System.out.println("我娶过来的密码"+member.getPassword());
 			boolean b=LoginService.checkLogin(member.getVip_id(),member.getPassword());	
@@ -118,8 +121,21 @@ public class LoginAction extends HttpServlet {
 				demolist.add("第四行");
 				
 				listTitle=TitleDao.listTitle(this.getMember());	
-				this.setFriends(FriendService.listFriends(this.getMember()));		
+				this.setFriends(FriendService.listFriends(this.getMember()));	
+				String vipId=String.valueOf(this.getMember().getVip_id());
+				String pwd=String.valueOf(this.getMember().getPassword());
+				Cookie cookie = new Cookie("vipId",vipId);
+				Cookie cookie1 = new Cookie("pwd",pwd);
+				cookie.setMaxAge(40);				
 				HttpServletRequest request = ServletActionContext.getRequest(); 
+				HttpServletResponse response = ServletActionContext.getResponse(); 
+				String ifsave=request.getParameter("ifSave");
+				
+				if("save".equals(ifsave))
+				{
+					response.addCookie(cookie);
+					response.addCookie(cookie1);
+				}
 				HttpSession session=request.getSession();
 				Member mm=new LoginService().selectName(this.getMember());				
 				session.setAttribute("vip", mm);

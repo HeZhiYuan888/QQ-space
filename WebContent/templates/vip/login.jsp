@@ -9,6 +9,23 @@
 <title >登陆页面</title>
 </head>
 <body>
+
+<%Cookie[] cookies =request.getCookies();
+String vipId="";
+String pwd="";
+for(Cookie cookie:cookies)
+{
+		if("vipId".equals(cookie.getName()))
+		{
+			 vipId=cookie.getValue();
+		}
+		if("pwd".equals(cookie.getName()))
+		{
+			 pwd=cookie.getValue();
+		}
+}
+%>
+<% %>
 <br><br><br>
 <div class="imag" >
 <h2 class="center" style="color:yellow;">
@@ -19,13 +36,17 @@
 <table>
 <tr>
 <td height="50px" width="150">账号</td>
-<td height="50px" width="150"><input  name="member.vip_id" type="text"></td>
+<td height="50px" width="150"><input  name="member.vip_id" type="text" value=<%=vipId%>></td>
 </tr>
 <tr>
 <td height="50px" width="150" >密码</td>
-<td height="50px" width="150"><input name="member.password" type="text"></td>
+<td height="50px" width="150"><input name="member.password" type="text" value=<%=pwd%>></td>
 </tr>
 </table>
+<br>
+<div class="center">
+<input class="center" type="checkbox" name="ifSave" value="save"/>记住账号和密码
+</div>
 <table height="100px" width="300px">
 <tr>
 <td height="50px" width="150">
